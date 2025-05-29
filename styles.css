@@ -1,0 +1,601 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: #ffece6;
+    background-color: #0f0f0f;
+    position: relative;
+    min-height: 100vh;
+    cursor: url('/cursor-mushroom.gif'), auto;
+    overflow-x: hidden;
+}
+
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.background-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/5f730c04470b1d7b39b72d960137b459.gif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.9;
+    filter: blur(0px);
+    image-rendering: pixelated;
+    z-index: -1;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.7) 100%);
+    z-index: -1;
+}
+
+.page-layout {
+    display: flex;
+    flex-direction: row-reverse;
+    max-width: 1600px;
+    margin: 0 auto;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.container {
+    flex: 1;
+    max-width: 1200px;
+    margin: 0;
+    padding: 0;
+}
+
+.chat-sidebar {
+    width: 300px;
+    height: calc(100vh - 40px);
+    position: sticky;
+    top: 20px;
+    background-color: transparent;
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+}
+
+.chat-header {
+    display: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.chat-header h2 {
+    margin: 0;
+    color: #ff8d70;
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 0px #5a1500;
+}
+
+.chat-container {
+    flex: 1;
+    overflow: hidden;
+}
+
+.chat-container iframe {
+    border: none;
+    background: transparent !important;
+    width: 100%;
+    height: 100%;
+}
+
+header {
+    display: none;
+}
+
+nav {
+    display: none;
+}
+
+.logo {
+    display: none;
+}
+
+.nav-links {
+    display: none;
+}
+
+.nav-links a {
+    display: none;
+}
+
+.nav-links a.active, .nav-links a:hover {
+    display: none;
+}
+
+main {
+    padding: 60px 0 40px;
+}
+
+.profile-header {
+    margin-bottom: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 16px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-banner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background-image: url('/35ca090fcd87865779bf5ddb610a264f.gif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 20px;
+    image-rendering: pixelated;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-top: 120px;
+}
+
+.profile-avatar-container {
+    position: relative;
+}
+
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    object-fit: cover;
+    background-color: #333;
+    image-rendering: pixelated;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.profile-avatar:hover {
+    transform: scale(1.05);
+}
+
+.profile-details {
+    flex: 1;
+}
+
+.username-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.username-container h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ff6e4a;
+    text-shadow: 2px 2px 0px #7a1f00;
+}
+
+.verified-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background-color: #ff3333;
+    color: white;
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(255, 51, 51, 0.5);
+}
+
+.profile-description {
+    color: #ccc;
+    margin-bottom: 20px;
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+.profile-stats {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 15px;
+}
+
+.stat {
+    font-size: 0.9rem;
+    color: #999;
+}
+
+.stat span {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffbfaa;
+    margin-right: 5px;
+}
+
+.tabs-container {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 16px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 15px;
+}
+
+.tab-button {
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 1rem;
+    padding: 10px 20px;
+    cursor: url('/cursor-mushroom.gif'), pointer;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 0px #000;
+}
+
+.tab-button:hover {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.tab-button.active {
+    color: #ff8d70;
+    background-color: rgba(255, 255, 255, 0.1);
+    font-weight: 600;
+    box-shadow: inset 0 0 5px rgba(255, 110, 74, 0.5);
+}
+
+.tab-panel {
+    display: none;
+}
+
+.tab-panel.active {
+    display: block;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.project-card {
+    background-color: rgba(20, 20, 20, 0.7);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid rgba(255, 110, 74, 0.3);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8);
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    cursor: url('/cursor-mushroom.gif'), pointer;
+}
+
+.project-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    background-color: #333;
+    image-rendering: pixelated;
+}
+
+.project-details {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #ff8d70;
+    text-decoration: none;
+    cursor: url('/cursor-mushroom.gif'), pointer;
+}
+
+.project-description {
+    font-size: 0.9rem;
+    color: #999;
+    margin-bottom: 15px;
+    flex-grow: 1;
+    line-height: 1.5;
+}
+
+.project-stats {
+    display: flex;
+    gap: 15px;
+    font-size: 0.8rem;
+    color: #777;
+}
+
+.project-stat {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.project-stat-icon {
+    font-size: 0.9rem;
+}
+
+.user-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.user-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background-color: rgba(20, 20, 20, 0.7);
+    border-radius: 12px;
+    border: 2px solid rgba(255, 110, 74, 0.3);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8);
+}
+
+.user-item:hover {
+    transform: translateX(5px);
+    background-color: rgba(30, 30, 30, 0.7);
+    cursor: url('/cursor-mushroom.gif'), pointer;
+}
+
+.user-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #333;
+    image-rendering: pixelated;
+}
+
+.user-details {
+    flex: 1;
+}
+
+.user-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ff8d70;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 5px;
+    cursor: url('/cursor-mushroom.gif'), pointer;
+}
+
+.user-description {
+    font-size: 0.9rem;
+    color: #999;
+    line-height: 1.4;
+}
+
+.loading {
+    text-align: center;
+    padding: 30px;
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.about-content {
+    background-color: rgba(20, 20, 20, 0.7);
+    border-radius: 12px;
+    padding: 25px;
+    border: 1px solid rgba(255, 110, 74, 0.3);
+}
+
+.about-content h2 {
+    color: #ff8d70;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    text-shadow: 2px 2px 0px #5a1500;
+    letter-spacing: 1px;
+}
+
+.about-text {
+    color: #ffcebf;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    white-space: pre-wrap;
+}
+
+.zoom-effect {
+    animation: zoom-to-name 1.5s forwards;
+}
+
+.fade-white {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    opacity: 0;
+    z-index: 1000;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.fade-white.active {
+    opacity: 1;
+}
+
+#game-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    background-color: #0f0f0f;
+    cursor: none;
+}
+
+#game-canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+.follow-button {
+    padding: 10px 24px;
+    background: linear-gradient(to right, #ff6e4a, #ff3333);
+    border: none;
+    border-radius: 30px;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: url('/cursor-mushroom.gif'), pointer;
+    box-shadow: 0 4px 10px rgba(255, 51, 51, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.follow-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(255, 51, 51, 0.4);
+}
+
+.follow-button:active {
+    transform: translateY(1px);
+}
+
+.follow-button.following {
+    background: linear-gradient(to right, #555555, #333333);
+}
+
+.follow-button::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+.follow-button:hover::before {
+    transform: scale(1);
+    opacity: 1;
+}
+
+@keyframes zoom-to-name {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(10);
+    }
+}
+
+@media (max-width: 1000px) {
+    .page-layout {
+        flex-direction: column;
+    }
+    
+    .chat-sidebar {
+        width: 100%;
+        height: 500px;
+        margin-bottom: 40px;
+        position: relative;
+        top: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-info {
+        flex-direction: column;
+        text-align: center;
+        margin-top: 140px;
+    }
+    
+    .profile-stats {
+        justify-content: center;
+    }
+    
+    .projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 576px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .nav-links {
+        gap: 10px;
+    }
+    
+    .nav-links a {
+        padding: 6px 10px;
+        font-size: 0.9rem;
+    }
+    
+    .profile-avatar {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .username-container h1 {
+        font-size: 2rem;
+    }
+}
