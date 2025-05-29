@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-container">
+        <div class="overlay"></div>
+    </div>
+    
+    <audio id="background-music" loop>
+        <source src="/BIG SHOT.mp3" type="audio/mp3">
+    </audio>
+    
+    <div class="page-layout">
+        <main class="container">
+            <section class="profile-header">
+                <div class="profile-banner">
+                    <!-- Banner image is set via CSS -->
+                </div>
+                <div class="profile-info">
+                    <div class="profile-avatar-container">
+                        <img id="profile-avatar" src="" alt="Profile Avatar" class="profile-avatar">
+                    </div>
+                    <div class="profile-details">
+                        <div class="username-container">
+                            <h1 id="username"></h1>
+                            <span class="verified-badge">✓</span>
+                        </div>
+                        <p id="profile-description" class="profile-description"></p>
+                        <div class="profile-stats">
+                            <div class="stat">
+                                <span id="project-count">0</span> Projects
+                            </div>
+                            <div class="stat">
+                                <span id="follower-count">0</span> Followers
+                            </div>
+                            <div class="stat">
+                                <span id="following-count">0</span> Following
+                            </div>
+                        </div>
+                        <button id="follow-button" class="follow-button">Follow</button>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="tabs-container">
+                <div class="tabs">
+                    <button class="tab-button active" data-tab="projects">Projects</button>
+                    <button class="tab-button" data-tab="about">About Me</button>
+                    <button class="tab-button" data-tab="followers">Followers</button>
+                    <button class="tab-button" data-tab="following">Following</button>
+                </div>
+                
+                <div class="tab-content">
+                    <div id="projects-tab" class="tab-panel active">
+                        <div id="projects-grid" class="projects-grid">
+                            <div class="loading">Loading projects...</div>
+                        </div>
+                    </div>
+                    
+                    <div id="about-tab" class="tab-panel">
+                        <div class="about-content">
+                            <h2>About Me</h2>
+                            <div id="about-text" class="about-text">Loading profile information...</div>
+                        </div>
+                    </div>
+                    
+                    <div id="followers-tab" class="tab-panel">
+                        <div id="followers-list" class="user-list">
+                            <div class="loading">Loading followers...</div>
+                        </div>
+                    </div>
+                    
+                    <div id="following-tab" class="tab-panel">
+                        <div id="following-list" class="user-list">
+                            <div class="loading">Loading following...</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <div class="chat-sidebar">
+            <div class="chat-container">
+                <iframe src="https://hardcore.ishoutbox.com/" width="100%" height="100%" frameborder="0" style="background: transparent !important;"></iframe>
+            </div>
+        </div>
+    </div>
+    
+    <div id="game-container" class="hidden">
+        <canvas id="game-canvas"></canvas>
+        <audio id="sad-music" src="/sad_ambience.mp3" loop preload="auto"></audio>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
